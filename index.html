@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./node_modules/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#mytextarea',
+		plugins: 'autosave code writer-writing fullscreen wordcount preview importcss searchreplace autolink directionality visualblocks visualchars image media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists help charmap emoticons',
+	    toolbar: 'writer-writing | print | undo redo | code | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons  | insertfile image media template link anchor codesample | ltr rtl',
+	    skin: 'oxide-dark',
+	    content_css: "dark",
+	    language: 'zh-Hant',
+	    branding: false,
+	    promotion: false,
+	    elementpath: false,
+	    writer_writing_prompt_mode_parameter: "markdown",
+	    writer_writing_allow_high_light_parameter: true,
+	    writer_writing_append_mode_max_prompt_length:3700,
+	    paste_as_text:true,
+	    writer_writing_token_calculate: function (prompt) {
+		 console.log(prompt);
+		 return prompt;
+	   },
+	   autosave_ask_before_unload: false,
+	   autosave_restore_when_empty: true,
+	   autosave_retention: '1440m',
+	   setup: function (editor) {
+		editor.on('init', function () {
+		  editor.execCommand('mceFullScreen');
+		});
+	   }	
+      });
+    </script>
+  </head>
+  <body style="background-color: #222f3e;">
+    <textarea id="mytextarea"></textarea>
+  </body>
+</html>
